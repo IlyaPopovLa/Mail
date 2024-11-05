@@ -9,14 +9,12 @@ my_name = "Илья"
 from_address = "ilyadvmn@yandex.ru"
 to_address = "il.popov@lamoda.ru"
 
-letter = """From: {from_address} 
+msg = f"""From: {from_address} 
 To: {to_address}
 Subject: Приглашение!
-Content-Type: text/plain; charset="UTF-8";"""\
-    .format(from_address=from_address, to_address=to_address)
+Content-Type: text/plain; charset="UTF-8";
 
-
-templase = """Привет, {friend_name}! {my_name} приглашает тебя на сайт {website}!
+Привет, {friend_name}! {my_name} приглашает тебя на сайт {website}!
 
 {website} — это новая версия онлайн-курса по программированию. 
 Изучаем Python и не только. Решаем задачи. Получаем ревью от преподавателя. 
@@ -34,6 +32,7 @@ templase = """Привет, {friend_name}! {my_name} приглашает теб
 На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл."""\
     .format(website=website, friend_name=friend_name, my_name=my_name).encode("utf-8")
 
+
 load_dotenv()
 login = os.environ["LOGIN"]
 password = os.environ["PASSWORD"]
@@ -41,5 +40,5 @@ password = os.environ["PASSWORD"]
 
 server = smtplib.SMTP_SSL('smtp.yandex.ru:465')
 server.login(login, password)
-server.sendmail(from_address, to_address, templase)
+server.sendmail(from_address, to_address, msg)
 server.quit()
