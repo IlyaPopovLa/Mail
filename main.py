@@ -30,7 +30,7 @@ Content-Type: text/plain; charset="UTF-8";
 
 Регистрируйся → {website}  
 На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл."""\
-    .format(website=website, friend_name=friend_name, my_name=my_name).encode("utf-8")
+    .encode("utf-8")
 
 
 load_dotenv()
